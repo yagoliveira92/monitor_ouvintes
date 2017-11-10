@@ -6,7 +6,7 @@
 </head>
 <body>
   <h2>MONITOR DE AUDIÊNCIA DE RÁDIOS ONLINE</h2>
-  <?php
+ <?php
 
 $103fm = file_get_contents('http://stm18.abcaudio.tv:31696/index.html?sid=1');
 $fmsergipe = file_get_contents('http://radio.server6.com.br:8725/index.html?sid=1');
@@ -19,7 +19,7 @@ $jovempanaju = file_get_contents('http://sh.upx.com.br/proxy/535e_1?mp=');
 preg_match_all('Stream is up', $103fm, $conteudo103fm);
 echo $conteudo103fm;
 
->
+?>
 
 </body>
 </html>
