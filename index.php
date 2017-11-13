@@ -18,8 +18,8 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Nome da Rádio</th>
-							<th scope="col">Número de Ouvintes (gerais)</th>
 							<th scope="col">Número de Ouvintes (unicos*)</th>
+							<th scope="col">Número de Ouvintes (gerais)</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,11 +29,20 @@
 							<td>
 								<?php
 								$centoetresfm = file_get_contents('http://stm18.abcaudio.tv:31696/index.html?sid=1');
-								preg_match_all('/with(.*)of 5000 listeners/s', $centoetresfm, $conteudo103fm);
+								preg_match_all('/with(.*)of 5000 listeners \((.*) unique\)/s',$centoetresfm,$conteudo103fm);
+								if (!empty($conteudo103fm[2][0])) {
+									echo $conteudo103fm[2][0];
+								}else{
+									preg_match_all('/with(.*)of 5000 listeners/s',$centoetresfm,$conteudo103fm);
+									echo $conteudo103fm[1][0];
+								}
+								?>
+							</td>
+							<td>
+								<?php
 								echo $conteudo103fm[1][0];
 								?>
 							</td>
-							<td>#</td>
 						</tr>
 						<tr>
 							<th scope="row">2</th>
@@ -41,11 +50,20 @@
 							<td>
 								<?php
 								$fanfm = file_get_contents('http://69.30.202.98:7114/index.html?sid=1');
-								preg_match_all('/with(.*)of 2500 listeners/s', $fanfm, $conteudofan);
+								preg_match_all('/with(.*)of 2500 listeners \((.*) unique\)/s', $fanfm, $conteudofan);
+								if (!empty($conteudofan[2][0])){
+									echo $conteudofan[2][0];
+								}else{
+									preg_match_all('/with(.*)of 2500 listeners/s', $fanfm, $conteudofan);
+									echo $conteudofan[1][0];
+								}
+								?>
+							</td>
+							<td>
+								<?php
 								echo $conteudofan[1][0];
 								?>
 							</td>
-							<td>#</td>
 						</tr>
 						<tr>
 							<th scope="row">3</th>
@@ -53,11 +71,19 @@
 							<td>
 								<?php
 								$fmsergipe = file_get_contents('http://radio.server6.com.br:8725/index.html?sid=1');
-								preg_match_all('/with(.*)of 150 listeners/s', $fmsergipe, $conteudofmsergipe);
+								preg_match_all('/with(.*)of 150 listeners \((.*) unique\)/s', $fmsergipe, $conteudofmsergipe);
+								if (!empty($conteudofmsergipe[2][0])){
+									echo $conteudofmsergipe[2][0];
+								}else{
+									echo $conteudofmsergipe[1][0];
+								}
+								?>
+							</td>
+							<td>
+								<?php
 								echo $conteudofmsergipe[1][0];
 								?>
 							</td>
-							<td>#</td>
 						</tr>
 
 						<tr>
@@ -66,11 +92,20 @@
 							<td>
 								<?php
 								$ilhafm = file_get_contents('http://radio.server6.com.br:9851/index.html?sid=1');
-								preg_match_all('/with(.*)of 150 listeners/s', $ilhafm, $conteudoilha);
+								preg_match_all('/with(.*)of 150 listeners \((.*) unique\)/s', $ilhafm, $conteudoilha);
+								if (!empty($conteudoilha[2][0])){
+									echo $conteudoilha[2][0];
+								}else{
+									preg_match_all('/with(.*)of 150 listeners/s', $ilhafm, $conteudoilha);
+									echo $conteudoilha[1][0];
+								}
+								?>
+							</td>
+							<td>
+								<?php
 								echo $conteudoilha[1][0];
 								?>
 							</td>
-							<td>#</td>
 						</tr>
 						<tr>
 							<th scope="row">5</th>
@@ -79,11 +114,20 @@
 								<?php
 								ini_set("user_agent", "Mozilla/58.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)");
 								$jovempanaju = file_get_contents('http://sh.upx.com.br/proxy/535e_1');
-								preg_match_all('/with <B>(.*)of 9999 listeners/s', $jovempanaju, $conteudojp);
+								preg_match_all('/with <B>(.*)of 9999 listeners \((.*) unique/s', $jovempanaju, $conteudojp);
+								if (!empty($conteudojp[2][0])){
+									echo $conteudojp[2][0];
+								}else{
+									preg_match_all('/with <B>(.*)of 9999 listeners/s', $jovempanaju, $conteudojp);
+									echo $conteudojp[1][0];
+								}
+								?>
+							</td>
+							<td>
+								<?php
 								echo $conteudojp[1][0];
 								?>
 							</td>
-							<td>#</td>
 						</tr>
 						<tr>
 							<th scope="row">6</th>
@@ -95,7 +139,11 @@
 								echo $conteudomixfm[1][0];
 								?>	
 							</td>
-							<td>#</td>
+							<td>
+								<?php
+								echo $conteudomixfm[1][0];
+								?>
+							</td>
 						</tr>
 						<tr>
 							<th scope="row">7</th>
@@ -103,21 +151,26 @@
 							<td>
 								<?php
 								$xodofm = file_get_contents('http://07.stmip.net:7506/index.html?sid=1');
-								preg_match_all('/with(.*)of 3000 listeners/s', $xodofm, $conteudoxodo);
+								preg_match_all('/with(.*)of 3000 listeners \((.*) unique\)/s', $xodofm, $conteudoxodo);
+								if (empty($conteudoxodo[2][0])){
+									echo $conteudoxodo[2][0];
+								}else{
+									preg_match_all('/with(.*)of 3000 listeners/s', $xodofm, $conteudoxodo);
+									echo $conteudoxodo[1][0];
+								}
+								?>
+							</td>
+							<td>
+								<?php
 								echo $conteudoxodo[1][0];
 								?>
 							</td>
-							<td>#</td>
 						</tr>
 						<thead class="thead-light">
 							<tr>
 								<th scope="col">Total Geral</th>
 								<th></th>
-								<th>
-									<?php 
-									echo (intval($conteudo103fm[1][0]) + intval($conteudofan[1][0]) + intval($conteudofmsergipe[1][0]));
-									?>
-								</th>
+								<th>#</th>
 								<th>#</th>
 							</tr>
 						</thead>
@@ -126,7 +179,7 @@
 				<a href="http://abcaudio.tv" class="btn btn-primary">Ir para a Home</a>
 			</div>
 			<div class="card-footer text-muted">
-				<p>* Esse número corresponde aos número de IPs conectados simultaneamente no serviço de streaming.</p>
+				<p>*Esse número corresponde aos número de IPs conectados simultaneamente no servidor de streaming.</p>
 			</div>
 		</div>
 	</span>
