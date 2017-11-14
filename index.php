@@ -75,6 +75,7 @@
 								if (!empty($conteudofmsergipe[2][0])){
 									echo $conteudofmsergipe[2][0];
 								}else{
+									preg_match_all('/with(.*)of 150 listeners/s', $fmsergipe, $conteudofmsergipe);
 									echo $conteudofmsergipe[1][0];
 								}
 								?>
@@ -151,8 +152,8 @@
 							<td>
 								<?php
 								$xodofm = file_get_contents('http://07.stmip.net:7506/index.html?sid=1');
-								preg_match_all('/with(.*)of 3000 listeners \((.*) unique\)/s', $xodofm, $conteudoxodo);
-								if (empty($conteudoxodo[2][0])){
+								preg_match_all('/with(.*)of 3000 listeners \((.*) unique/s', $xodofm, $conteudoxodo);
+								if (!empty($conteudoxodo[2][0])){
 									echo $conteudoxodo[2][0];
 								}else{
 									preg_match_all('/with(.*)of 3000 listeners/s', $xodofm, $conteudoxodo);
