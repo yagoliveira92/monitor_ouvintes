@@ -155,8 +155,9 @@
 									if(!empty($conteudojp[1][0])){
 										echo $conteudojp[1][0];
 									}else{
-										echo "Offline"
+										echo "Offline";
 									}
+								}
 									?>
 								</td>
 								<td>
@@ -164,7 +165,7 @@
 									if(!empty($conteudojp[1][0])){
 										echo $conteudojp[1][0];
 									}else{
-										echo "Offline"
+										echo "Offline";
 									}
 									?>
 								</td>
