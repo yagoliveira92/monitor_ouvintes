@@ -34,13 +34,21 @@
 									echo $conteudo103fm[2][0];
 								}else{
 									preg_match_all('/with(.*)of 5000 listeners/s',$centoetresfm,$conteudo103fm);
-									echo $conteudo103fm[1][0];
+									if(!empty($conteudo103fm[1][0])){
+										echo $conteudo103fm[1][0];
+									}else{
+										echo "Offline";
+									}
 								}
 								?>
 							</td>
 							<td>
 								<?php
-								echo $conteudo103fm[1][0];
+								if(!empty($conteudo103fm[1][0])){
+									echo $conteudo103fm[1][0];
+								}else{
+									echo "Offline";
+								}
 								?>
 							</td>
 						</tr>
@@ -55,13 +63,21 @@
 									echo $conteudofan[2][0];
 								}else{
 									preg_match_all('/with(.*)of 2500 listeners/s', $fanfm, $conteudofan);
-									echo $conteudofan[1][0];
+									if(!empty($conteudofan[1][0])){
+										echo $conteudofan[1][0];
+									}else{
+										echo "Offline";
+									}
 								}
 								?>
 							</td>
 							<td>
 								<?php
-								echo $conteudofan[1][0];
+								if(!empty($conteudofan[1][0])){
+									echo $conteudofan[1][0];
+								}else{
+									echo "Offline";
+								}
 								?>
 							</td>
 						</tr>
@@ -76,13 +92,21 @@
 									echo $conteudofmsergipe[2][0];
 								}else{
 									preg_match_all('/with(.*)of 150 listeners/s', $fmsergipe, $conteudofmsergipe);
-									echo $conteudofmsergipe[1][0];
+									if (!empty($conteudofmsergipe[1][0])){
+										echo $conteudofmsergipe[1][0];
+									}else{
+										echo "Offline";
+									}
 								}
 								?>
 							</td>
 							<td>
 								<?php
-								echo $conteudofmsergipe[1][0];
+								if (!empty($conteudofmsergipe[1][0])){
+									echo $conteudofmsergipe[1][0];
+								}else{
+									echo "Offline";
+								}
 								?>
 							</td>
 						</tr>
@@ -98,13 +122,21 @@
 									echo $conteudoilha[2][0];
 								}else{
 									preg_match_all('/with(.*)of 150 listeners/s', $ilhafm, $conteudoilha);
-									echo $conteudoilha[1][0];
+									if (!empty($conteudoilha[1][0])){
+										echo $conteudoilha[1][0];
+									}else{
+										echo "Offline";
+									}
 								}
 								?>
 							</td>
 							<td>
 								<?php
-								echo $conteudoilha[1][0];
+								if (!empty($conteudoilha[1][0])){
+									echo $conteudoilha[1][0];
+								}else{
+									echo "Offline";
+								}
 								?>
 							</td>
 						</tr>
@@ -120,69 +152,84 @@
 									echo $conteudojp[2][0];
 								}else{
 									preg_match_all('/with <B>(.*)of 9999 listeners/s', $jovempanaju, $conteudojp);
-									echo $conteudojp[1][0];
-								}
-								?>
-							</td>
-							<td>
-								<?php
-								echo $conteudojp[1][0];
-								?>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">6</th>
-							<td>Mix FM</td>
-							<td>
-								<?php 
-								$mixfm = file_get_contents('http://c1.fabricahost.com.br:8043/');
-								preg_match_all('/<\/td><\/tr><tr><td>Listeners \(current\):<\/td><td class="streamstats">(.*)<\/td><\/tr><tr><td>Listeners/', $mixfm, $conteudomixfm);
-								echo $conteudomixfm[1][0];
-								?>	
-							</td>
-							<td>
-								<?php
-								echo $conteudomixfm[1][0];
-								?>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">7</th>
-							<td>Xodó FM</td>
-							<td>
-								<?php
-								$xodofm = file_get_contents('http://07.stmip.net:7506/index.html?sid=1');
-								preg_match_all('/with(.*)of 3000 listeners \((.*) unique/s', $xodofm, $conteudoxodo);
-								if (!empty($conteudoxodo[2][0])){
-									echo $conteudoxodo[2][0];
-								}else{
-									preg_match_all('/with(.*)of 3000 listeners/s', $xodofm, $conteudoxodo);
-									echo $conteudoxodo[1][0];
-								}
-								?>
-							</td>
-							<td>
-								<?php
-								echo $conteudoxodo[1][0];
-								?>
-							</td>
-						</tr>
-						<thead class="thead-light">
-							<tr>
-								<th scope="col">Total Geral</th>
-								<th></th>
-								<th>#</th>
-								<th>#</th>
+									if(!empty($conteudojp[1][0])){
+										echo $conteudojp[1][0];
+									}else{
+										echo "Offline"
+									}
+									?>
+								</td>
+								<td>
+									<?php
+									if(!empty($conteudojp[1][0])){
+										echo $conteudojp[1][0];
+									}else{
+										echo "Offline"
+									}
+									?>
+								</td>
 							</tr>
-						</thead>
-					</tbody>
-				</table>
-				<a href="http://abcaudio.tv" class="btn btn-primary">Ir para a Home</a>
+							<tr>
+								<th scope="row">6</th>
+								<td>Mix FM</td>
+								<td>
+									<?php 
+									$mixfm = file_get_contents('http://c1.fabricahost.com.br:8043/');
+									preg_match_all('/<\/td><\/tr><tr><td>Listeners \(current\):<\/td><td class="streamstats">(.*)<\/td><\/tr><tr><td>Listeners/', $mixfm, $conteudomixfm);
+									echo $conteudomixfm[1][0];
+									?>	
+								</td>
+								<td>
+									<?php
+									echo $conteudomixfm[1][0];
+									?>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">7</th>
+								<td>Xodó FM</td>
+								<td>
+									<?php
+									$xodofm = file_get_contents('http://07.stmip.net:7506/index.html?sid=1');
+									preg_match_all('/with(.*)of 3000 listeners \((.*) unique/s', $xodofm, $conteudoxodo);
+									if (!empty($conteudoxodo[2][0])){
+										echo $conteudoxodo[2][0];
+									}else{
+										preg_match_all('/with(.*)of 3000 listeners/s', $xodofm, $conteudoxodo);
+										if (!empty($conteudoxodo[1][0])) {
+											echo $conteudoxodo[1][0];
+										}else{
+											echo "Offline";
+										}									
+									}
+									?>
+								</td>
+								<td>
+									<?php
+									if (!empty($conteudoxodo[1][0])) {
+										echo $conteudoxodo[1][0];
+									}else{
+										echo "Offline";
+									}		
+									?>
+								</td>
+							</tr>
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">Total Geral</th>
+									<th></th>
+									<th>#</th>
+									<th>#</th>
+								</tr>
+							</thead>
+						</tbody>
+					</table>
+					<a href="http://abcaudio.tv" class="btn btn-primary">Ir para a Home</a>
+				</div>
+				<div class="card-footer text-muted">
+					<p>*Esse número corresponde aos número de IPs conectados simultaneamente no servidor de streaming.</p>
+				</div>
 			</div>
-			<div class="card-footer text-muted">
-				<p>*Esse número corresponde aos número de IPs conectados simultaneamente no servidor de streaming.</p>
-			</div>
-		</div>
-	</span>
-</body>
-</html>
+		</span>
+	</body>
+	</html>
